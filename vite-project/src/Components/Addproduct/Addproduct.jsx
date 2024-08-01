@@ -10,11 +10,12 @@ const Addproduct = () => {
      setImage(e.target.files[0])
          
       }
+      
       //this is a hook used to add product details with in database
        const [productDetails,setproductDetails]=useState({
          name:"",
          image:"",
-         category:"",
+         category:"women",
          new_price:"",
          old_price:""
        })
@@ -22,32 +23,35 @@ const Addproduct = () => {
              setproductDetails({...productDetails,[e.target.name]:e.target.value})
              
         }
+        const AddProduct=async(e)=>{
+            console.log(productDetails)       
+}
   return (
     <div className='addproduct'>
          <div className='addproduct-itemfield'>
             <p>
                 Product Title
             </p>
-            <input value={productDetails} onChange={producthandler} type="text"   name='name' placeholder='Type Here'/>
+            <input value={productDetails.name} onChange={producthandler} type="text"   name='name' placeholder='Type Here'/>
 
 
          </div>
          <div className='addproduct-price'>
             <div className='addproduct-itemfield'>
                 <p>Price</p>
-                <input type="text" name='old_rice' placeholder='Type Here'/>
+                <input value={productDetails.old_price} onChange={producthandler} type="text" name='old_price' placeholder='Type Here'/>
 
             </div>
             <div className='addproduct-itemfield'>
                 <p>Offer Price</p>
-                <input type="text" name='new_rice' placeholder='Type Here'/>
+                <input value={productDetails.new_price} onChange={producthandler} type="text" name='new_price' placeholder='Type Here'/>
 
             </div>
 
          </div>
          <div className="addproduct-itemmfield">
             <p>Product Category</p>
-            <select name="category"  className='addproduct-selector'>
+            <select value={productDetails.category} onChange={producthandler} name="category"  className='addproduct-selector'>
                 <option value="women">Women</option>
                 <option value="men">Men</option>
                 <option value="kid">Kids</option>
@@ -55,14 +59,16 @@ const Addproduct = () => {
          </div>
          <div className='addproduct-itemfield'>
             <label htmlFor="file-input">
-                <img src={image?URL.createObjectURL(image):upload_area} alt="" className='addproduct-thumnail-img'/>
+                <img  src={image?URL.createObjectURL(image):upload_area} alt="" className='addproduct-thumnail-img'/>
                
             </label>
             <input onChange={imgaeHandler} type="file" id='file-input' name='image' hidden/>
 
           
          </div>
-         <button className='addproduct-btn'>ADD</button>       
+         <button onClick={()=>{
+             AddProduct()
+         }} className='addproduct-btn'>ADD</button>       
       
     </div>
   )
