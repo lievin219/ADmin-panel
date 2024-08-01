@@ -30,6 +30,7 @@
 }
 .addproduct-selector{
     padding:10px;
+    max-width:none;
     width:100%;
     height:50px;
     font-size: 14px;
@@ -43,5 +44,26 @@
        height: 120px;
        border-radius: 10px;
        object-fit: contain;
-       margin:10px 0px
+       margin:10px 0px;
+       
+}
+.addproduct-btn{
+     margin-top:20px;
+     width:160px;
+      height:50px;
+      border-radius:6px;
+       background: #609ff6;
+       border: none;
+       cursor: pointer;
+       color: white;
+       font-size: 16px;
+       font-weight: 500;
+}
+@media(max-width:800px){
+.addproduct{
+      width:auto;
+       padding:30px;
+        margin:20px;
+        
+}
 }
