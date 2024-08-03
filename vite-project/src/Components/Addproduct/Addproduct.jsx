@@ -24,7 +24,27 @@ const Addproduct = () => {
              
         }
         const AddProduct=async(e)=>{
-            console.log(productDetails)       
+            // console.log(productDetails)       
+             let responseData;
+              let product=productDetails;
+              let formData=new FormData()
+              formData.append("product",image)
+              await fetch('http://localhost:4000/upload',{
+                    method:'Post',
+                    // headers:{
+                    //     Accept:"application/json"
+                    // },
+                    body:formData,
+              }).then((resp)=>
+                  resp.json()
+              ).then((data)=>{
+                 responseData=data
+
+              })
+               if(responseData.success){
+                 product.image=responseData.image_Url
+                  console.log(product,'it is being fetched but it si not adding a picture')
+               }
 }
   return (
     <div className='addproduct'>
