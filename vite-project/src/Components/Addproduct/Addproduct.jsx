@@ -43,8 +43,21 @@ const Addproduct = () => {
               })
                if(responseData.success){
                  product.image=responseData.image_Url
-                  console.log(product,'it is being fetched but it si not adding a picture')
+               
+                await fetch('http://localhost:4000/addproduct',{
+                    method:"Post",
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                     body:JSON.stringify(product)
+            }).then((response)=>response.json()).then((data)=>{
+                     data.message?alert('product added succes'):'product failed to be uploaded'
+            })
                }
+               else if(responseData.err){
+                  alert('data failed to be linked to database')
+               }
+              
 }
   return (
     <div className='addproduct'>

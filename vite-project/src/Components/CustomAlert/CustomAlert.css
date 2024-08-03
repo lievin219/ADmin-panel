@@ -1,0 +1,41 @@
+.custom-alert {
+    padding: 16px;
+    margin: 16px;
+    border-radius: 4px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+  }
+  
+  .custom-alert-success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .custom-alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .custom-alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .custom-alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .custom-alert button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
