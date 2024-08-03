@@ -1,8 +1,24 @@
 import React, { useState } from 'react'
 import './Addproduct.css'
+// import Alert from '../Alert/Alert'
 import upload_area from '../../assets/Admin_Assets/upload_area.svg'
 
 const Addproduct = () => {
+    // Alert things//
+    //   const [alertOpen, setAlertOpen] = useState(false);
+
+    //   const handleAlertOpen = () => {
+    //   setAlertOpen(true);
+    // };
+  
+    // const handleAlertClose = (event, reason) => {
+    //   if (reason === 'clickaway') {
+    //     return;
+    //   }
+    //   setAlertOpen(false);
+    // };
+  
+    //End of alert modification
     // this hook  below is used in adding a picture once a an admin uploaded a picture else an upload picture will remain the one which is static
      const [image,setImage]=useState(false)
       
@@ -51,10 +67,10 @@ const Addproduct = () => {
                     },
                      body:JSON.stringify(product)
             }).then((response)=>response.json()).then((data)=>{
-                     data.message?alert('product added succes'):'product failed to be uploaded'
-            })
+                     data.message?alert('product added in database'):alert('product not added in database')})
                }
                else if(responseData.err){
+                
                   alert('data failed to be linked to database')
                }
               
