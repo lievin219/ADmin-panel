@@ -70,6 +70,8 @@ const Addproduct = () => {
                      data.message?alert('product added in database'):alert('product not added in database')})
                }
                else if(responseData.err){
+
+
                 
                   alert('data failed to be linked to database')
                }
