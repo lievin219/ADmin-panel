@@ -144,16 +144,16 @@ const Listproduct = () => {
 
   const ProductInfo = async () => {
     try {
-      const response = await fetch("http://localhost:4000/allproducts");
+      const response = await fetch("http://localhost:4000/allproducts!");
       const result = await response.json();
 
       if (result.success && Array.isArray(result.message)) {
         setAllProducts(result.message);
-      } else {
-        setAllProducts("Unexpected response format or error in data");
-      }
-    } catch (error) {
-      setAllProducts(`Error fetching products: ${error.message}`);
+      // } else {
+      //   setAllProducts(`Unexpected response format  error in `);
+      // }
+    } }catch (error) {
+      setAllProducts(`Error fetching products: ${error.messages}`);
     }
   };
 

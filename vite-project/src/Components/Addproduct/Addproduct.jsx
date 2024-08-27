@@ -67,7 +67,7 @@ const Addproduct = () => {
                     },
                      body:JSON.stringify(product)
             }).then((response)=>response.json()).then((data)=>{
-                     data.message?alert('product added in database'):alert('product not added in database')})
+                     data.message?alert('product added in database'):alert(`product not added in database due to ${responseData.err}`)})
                }
                else if(responseData.err){
 
