@@ -17,7 +17,8 @@ const Addproduct = () => {
     //   }
     //   setAlertOpen(false);
     // };
-  
+       b                       b                
+
     //End of alert modification
     // this hook  below is used in adding a picture once a an admin uploaded a picture else an upload picture will remain the one which is static
      const [image,setImage]=useState(false)
@@ -40,41 +41,41 @@ const Addproduct = () => {
              
         }
         const AddProduct=async(e)=>{
-            // console.log(productDetails)       
+            // console.log(productDetails)    
              let responseData;
               let product=productDetails;
               let formData=new FormData()
-              formData.append("product",image)
-              await fetch('http://localhost:4000/upload',{
-                    method:'Post',
-                    // headers:{
-                    //     Accept:"application/json"
-                    // },
-                    body:formData,
-              }).then((resp)=>
-                  resp.json()
-              ).then((data)=>{
-                 responseData=data
+            //   formData.append("product",image)
+            //   await fetch('http://localhost:4000/uploadi',{
+            //         method:'Post',
+            //         // headers:{
+            //         //     Accept:"application/json"
+            //         // },
+            //         body:formData,
+            //   }).then((resp)=>
+            //       resp.json()
+            //   ).then((data)=>{
+            //      responseData=data
 
-              })
-               if(responseData.success){
-                 product.image=responseData.image_Url
+            //   })
+            //    if(responseData.success){
+                //  product.image=responseData.image_Url
                
-                await fetch('http://localhost:4000/addproduct',{
+                await fetch('https://backend-mernproject-u66q.onrender.com/addproduct',{
                     method:"Post",
                     headers:{
                         'Content-Type':'application/json'
                     },
                      body:JSON.stringify(product)
             }).then((response)=>response.json()).then((data)=>{
-                     data.message?alert('product added in database'):alert(`product not added in database due to ${responseData.err}`)})
-               }
-               else if(responseData.err){
+                     data.message?alert('product added in database'):alert(`product not added in database due to `)})
+            //    }
+            //    else if(responseData.err){
 
 
                 
-                  alert('data failed to be linked to database')
-               }
+            //       alert('data failed to be linked to database')
+            //    }
               
 }
   return (
@@ -109,11 +110,8 @@ const Addproduct = () => {
             </select>
          </div>
          <div className='addproduct-itemfield'>
-            <label htmlFor="file-input">
-                <img  src={image?URL.createObjectURL(image):upload_area} alt="" className='addproduct-thumnail-img'/>
-               
-            </label>
-            <input onChange={imgaeHandler} type="file" id='file-input' name='image' hidden/>
+            
+            <input  type=""  name='image' />
 
           
          </div>

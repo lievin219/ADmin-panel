@@ -144,7 +144,7 @@ const Listproduct = () => {
 
   const ProductInfo = async () => {
     try {
-      const response = await fetch("http://localhost:4000/allproducts!");
+      const response = await fetch("https://backend-mernproject-u66q.onrender.com/allproducts");
       const result = await response.json();
 
       if (result.success && Array.isArray(result.message)) {
@@ -153,7 +153,7 @@ const Listproduct = () => {
       //   setAllProducts(`Unexpected response format  error in `);
       // }
     } }catch (error) {
-      setAllProducts(`Error fetching products: ${error.messages}`);
+      setAllProducts(`Error fetching products: ${error.message}`);
     }
   };
 
@@ -162,7 +162,7 @@ const Listproduct = () => {
   }, []);
 
   const removeproduct = async (id) => {
-    await fetch(`http://localhost:4000/removeproduct/${id}`, {
+    await fetch(`https://backend-mernproject-u66q.onrender.com/removeproduct/${id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
