@@ -4,20 +4,21 @@ import './Addproduct.css'
 import upload_area from '../../assets/Admin_Assets/upload_area.svg'
 
 const Addproduct = () => {
-    // Alert things//
-    //   const [alertOpen, setAlertOpen] = useState(false);
+    
+      const [alertOpen, setAlertOpen] = useState(false);
 
-    //   const handleAlertOpen = () => {
-    //   setAlertOpen(true);
-    // };
+      const handleAlertOpen = () => {
+      setAlertOpen(true);
+    };
   
-    // const handleAlertClose = (event, reason) => {
-    //   if (reason === 'clickaway') {
-    //     return;
-    //   }
-    //   setAlertOpen(false);
-    // };
-       b                       b                
+
+    const handleAlertClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setAlertOpen(false);
+    };
+                                   
 
     //End of alert modification
     // this hook  below is used in adding a picture once a an admin uploaded a picture else an upload picture will remain the one which is static
@@ -45,21 +46,21 @@ const Addproduct = () => {
              let responseData;
               let product=productDetails;
               let formData=new FormData()
-            //   formData.append("product",image)
-            //   await fetch('http://localhost:4000/uploadi',{
-            //         method:'Post',
-            //         // headers:{
-            //         //     Accept:"application/json"
-            //         // },
-            //         body:formData,
-            //   }).then((resp)=>
-            //       resp.json()
-            //   ).then((data)=>{
-            //      responseData=data
+              formData.append("product",image)
+              await fetch('https://backend-mernproject-u66q.onrender.com/upload',{
+                    method:'Post',
+                    headers:{
+                        Accept:"application/json"
+                    },
+                    body:formData,
+              }).then((resp)=>
+                  resp.json()
+              ).then((data)=>{
+                 responseData=data
 
-            //   })
-            //    if(responseData.success){
-                //  product.image=responseData.image_Url
+              })
+               if(responseData.success){
+                 product.image=responseData.image_Url
                
                 await fetch('https://backend-mernproject-u66q.onrender.com/addproduct',{
                     method:"Post",
@@ -69,14 +70,14 @@ const Addproduct = () => {
                      body:JSON.stringify(product)
             }).then((response)=>response.json()).then((data)=>{
                      data.message?alert('product added in database'):alert(`product not added in database due to `)})
-            //    }
+            // }
             //    else if(responseData.err){
 
 
                 
             //       alert('data failed to be linked to database')
             //    }
-              
+            }
 }
   return (
     <div className='addproduct'>
@@ -110,8 +111,12 @@ const Addproduct = () => {
             </select>
          </div>
          <div className='addproduct-itemfield'>
+            <label htmlFor="file-input">
+               <img src={image?URL.createObjectURL(image):upload_area} className='addproduct-thumnail-img' alt="" />
             
-            <input  type=""  name='image' />
+          
+            </label>
+            <input onChange={imgaeHandler} type="file"  name="image" id="file-input" hidden/>
 
           
          </div>
